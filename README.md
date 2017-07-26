@@ -16,7 +16,7 @@
       * Find all possible words in a board of characters
       * Bridges in a Graph
   2. **Linked Lists**
-      * Insertion of a node given certain condtraints
+      * Insertion of a node given certain constraints
       * Deletion of a node given some constraints
       * Compare two strings represented as Linked Lists
       * Add two numbers represented by Linked Lists
