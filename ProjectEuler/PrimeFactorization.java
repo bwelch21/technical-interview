@@ -31,6 +31,6 @@ public class PrimeFactorization {
 	}
 
 	public static void main(String args[]) {
-		findLargestPrimeFactor(21);
+		findLargestPrimeFactor(600851475143);
 	}
 }
