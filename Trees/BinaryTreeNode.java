@@ -63,6 +63,38 @@ public class BinaryTreeNode {
 		}
 	}
 
+	public void printPreOrder() {
+		System.out.println(this.value);
+		
+		if(this.leftChild != null) {
+			this.leftChild.printPreOrder();
+		}
+		if(this.rightChild != null) {
+			this.rightChild.printPreOrder();
+		}
+	}
+
+	public void printInOrder() {
+		if(this.leftChild != null){
+			this.leftChild.printInOrder();
+		}
+		System.out.println(this.value);
+		if(this.rightChild != null) {
+			this.rightChild.printInOrder();
+		}
+	}
+
+	public void printPostOrder() {
+		if(this.leftChild != null){
+			this.leftChild.printPostOrder();
+		}
+		if(this.rightChild != null) {
+			this.rightChild.printPostOrder();
+		}
+
+		System.out.println(this.value);
+	}
+
 	public static void main(String[] args) {
 		/*
 					n1
@@ -71,7 +103,7 @@ public class BinaryTreeNode {
 			   /
 			n4		
 		   /  \
-		n6	   n5
+		n5	   n6
 		
 		*/
 
@@ -82,8 +114,11 @@ public class BinaryTreeNode {
 		BinaryTreeNode n2 = new BinaryTreeNode(2, n4, null);
 		BinaryTreeNode n1 = new BinaryTreeNode(1, n2, n3);
 
-		n1.breadthFirstSearch(5);
-		n1.depthFirstSearch(5);
+		// n1.breadthFirstSearch(5);
+		// n1.depthFirstSearch(5);
+		// n1.printPreOrder();
+		// n1.printInOrder();
+		n1.printPostOrder();
 	}
 	
 }
