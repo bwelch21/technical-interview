@@ -11,8 +11,8 @@ public class BinaryTreeNode {
 	private BinaryTreeNode leftChild;
 	private BinaryTreeNode rightChild;
 
-	public BinaryTreeNode() {
-		this(0, null, null);
+	public BinaryTreeNode(int value) {
+		this(value, null, null);
 	}
 
 	public BinaryTreeNode(int value, BinaryTreeNode leftChild, BinaryTreeNode rightChild) {
@@ -95,6 +95,43 @@ public class BinaryTreeNode {
 		System.out.println(this.value);
 	}
 
+	public static boolean canFormTree(ArrayList<BinaryTreeNode> nodes) {
+		// Given an array of BinaryTreeNodes, check if all of these nodes can form a binary tree
+
+
+		/*
+			SOLUTION:
+			now i am thinking that i can run a breadth first search from starting from each node in the array list. if one of them comes out to use all of the nodes in the list, i.e. size of tree == size of array list, then return true
+
+		*/
+
+			int numNodes = nodes.size();
+			for(int i = 0; i < numNodes; i++) {
+				BinaryTreeNode currentRoot = nodes.get(i);
+				int treeSize = 0;
+				Queue<BinaryTreeNode> toVisit = new LinkedList<>();
+
+				toVisit.add(currentRoot);
+				while(toVisit.peek() != null) {
+					BinaryTreeNode currentNode = toVisit.poll();
+					treeSize++;
+
+					if(currentNode.leftChild != null) {
+						toVisit.add(currentNode.leftChild);	
+					}
+					if(currentNode.rightChild != null) {
+						toVisit.add(currentNode.rightChild);	
+					}
+				}
+
+				if(treeSize == numNodes) {
+					return true;	
+				}
+			}
+
+			return false;
+		}
+
 	public static void main(String[] args) {
 		/*
 					n1
@@ -118,7 +155,18 @@ public class BinaryTreeNode {
 		// n1.depthFirstSearch(5);
 		// n1.printPreOrder();
 		// n1.printInOrder();
-		n1.printPostOrder();
+		// n1.printPostOrder();
+
+		ArrayList<BinaryTreeNode> nodes = new ArrayList<BinaryTreeNode>();
+		// nodes.add(new BinaryTreeNode(7, n3, null));	
+		nodes.add(n1);
+		nodes.add(n2);
+		nodes.add(n3);
+		nodes.add(n4);
+		nodes.add(n5);
+		nodes.add(n6);
+
+		System.out.println(canFormTree(nodes));
 	}
 	
 }
