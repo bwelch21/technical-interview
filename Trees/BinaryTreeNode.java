@@ -156,6 +156,26 @@ public class BinaryTreeNode {
 			return false;
 		}
 
+	public static boolean samePostOrder(BinaryTreeNode n1, BinaryTreeNode n2) {
+		if(n1.leftChild != null && n2.leftChild != null) {
+			return samePostOrder(n1.leftChild, n2.leftChild);
+		} else if(n1.leftChild != null) {
+			return false;
+		} else if(n2.leftChild != null) {
+			return false;
+		}
+		
+		if(n2.rightChild != null && n2.rightChild != null) {
+			return samePostOrder(n1.rightChild, n2.rightChild);
+		} else if(n1.rightChild != null) {
+			return false;
+		} else if(n2.rightChild != null) {
+			return false;
+		}
+
+		return n1.value == n2.value;
+	}
+
 	public static void main(String[] args) {
 		/*
 					n1
@@ -190,7 +210,7 @@ public class BinaryTreeNode {
 		nodes.add(n5);
 		nodes.add(n6);
 
-		System.out.println(canFormTree(nodes));
+		System.out.println(samePostOrder(n1, n2));
 	}
 	
 }
