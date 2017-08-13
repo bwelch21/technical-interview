@@ -15,9 +15,9 @@ public class HashTable {
 	}
 
 	public void add(String key, String value) {
-		
+
 		if(size == maxSize) {
-			return;
+			this.resizeTable();
 		}
 
 		int index = this.hash(key);
@@ -74,6 +74,20 @@ public class HashTable {
 		return charSum % this.maxSize;	
 	}
 
+	public void resizeTable() {
+		String[] newTable = new String[this.maxSize + 10];
+
+		for(int i = 0; i < maxSize; i++) {
+			newTable[i] = this.table[i];
+		}
+
+		this.table = newTable;
+		this.maxSize = this.maxSize + 10;
+		this.size = this.maxSize;
+
+		return;
+	}
+
 	public static void main(String[] args) {
 		HashTable phoneNumbers = new HashTable(3);
 
@@ -83,6 +97,8 @@ public class HashTable {
 		System.out.println(phoneNumbers.get("Brandt"));
 		System.out.println(phoneNumbers.get("Home"));
 		System.out.println(phoneNumbers.get("Maryland"));
-		phoneNumbers.add("Error", "1234567890");
+		phoneNumbers.add("NoLongerAnError", "1234567890");
+		System.out.println(phoneNumbers.get("NoLongerAnError"));
+
 	}
 }
