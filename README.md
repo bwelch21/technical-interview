@@ -71,4 +71,5 @@
       * smallest subarray with sum greater than a given value
       * Stock buy-or-sell to maximize profit
       
-      
+  ## Links and resources
+  https://www.toptal.com/algorithms/interview-questions
